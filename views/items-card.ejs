@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=category.title%></title>
+  </head>
+  <body>
+    <header class="page-header">
+      <p class="category-page-label">Category</p>
+      <h3 class="category-title"><%=category.title%></h3>
+    </header>
+
+    <main class="page-content">
+      <section class="page-introduction">
+        <p class="intro-text">Items</p>
+      </section>
+      <section class="item-details">
+        <a class="item-details__link" href="/items/<%= item.name %>"><%= item.name %></a>
+        <p class="item-details__manufacturer">Manufacturer: <%= item.manufacturer %></p>
+        <p class="item-details__price">Price: $ <%= item.price %></p>
+        <p class="item-details__quantity">Quantity: <%= item.quantity %></p>
+      </section>
+    </main>
+
+    <a class="back-to-home-link" href="/items">Return to all items</a>
+  </body>
+</html>
