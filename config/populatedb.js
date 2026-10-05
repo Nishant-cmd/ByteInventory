@@ -1,16 +1,16 @@
-const { Client } = require("pg");
-const path = require("node:path");
-const {loadEnvFile}=require("node:process");
-loadEnvFile(path.join(__dirname, "../.env"));
+const { Client } = require('pg');
+const path = require('node:path');
+const { loadEnvFile } = require('node:process');
+loadEnvFile(path.join(__dirname, '../.env'));
 
+const SQL = ` 
 
-
-const SQL=` CREATE TABLE IF NOT EXISTS categories (
+CREATE TABLE IF NOT EXISTS categories (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
-    totalItems INTEGER DEFAULT 0
 );
+
 CREATE TABLE IF NOT EXISTS items (
     item_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(255) NOT NULL,
@@ -22,11 +22,11 @@ CREATE TABLE IF NOT EXISTS items (
     categoryId INTEGER REFERENCES categories(id)
 );
 
-INSERT INTO categories(name,description,totalItems) VALUES('Controller','Game/PC controllers',1),
-('Graphics Cards','High-performance graphics cards for gaming',1),
-('Memory','High-speed RAM modules',1),
-('Processors','High-performance processors for gaming',1),
-('Storage','Solid-state drives and other storage devices',1);
+INSERT INTO categories(name,description) VALUES('Controller','Game/PC controllers'),
+('Graphics Cards','High-performance graphics cards for gaming'),
+('Memory','High-speed RAM modules'),
+('Processors','High-performance processors for gaming'),
+('Storage','Solid-state drives and other storage devices');
 
 INSERT INTO items(name,description,manufacturer,price,quantity,categoryName,categoryId) VALUES('Xbox Controller','Wireless controller for Xbox','Microsoft',59.99,100,'Controller',1),
 ('NVIDIA GeForce RTX 3080','High-end graphics card','NVIDIA',699.99,50,'Graphics Cards',2),
@@ -37,12 +37,12 @@ INSERT INTO items(name,description,manufacturer,price,quantity,categoryName,cate
 `;
 
 async function initializeDatabase() {
-    const client = new Client({
-        connectionString: process.env.DATABASE_URL
-    });
-    await client.connect();
-    await client.query(SQL);
-    await client.end();
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+  });
+  await client.connect();
+  await client.query(SQL);
+  await client.end();
 }
 
 initializeDatabase();
