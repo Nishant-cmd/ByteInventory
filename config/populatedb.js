@@ -27,7 +27,7 @@ INSERT INTO categories(name,description) VALUES('Controller','Game/PC controller
 ('Processors','High-performance processors for gaming'),
 ('Storage','Solid-state drives and other storage devices');
 
-INSERT INTO items(name,description,manufacturer,price,quantity,category_id) VALUES('Xbox Controller','Wireless controller for Xbox','Microsoft',59.99,100,'Controller',1),
+INSERT INTO items(name,description,manufacturer,price,quantity,category_id) VALUES('Xbox Controller','Wireless controller for Xbox','Microsoft',59.99,100,1),
 ('NVIDIA GeForce RTX 3080','High-end graphics card','NVIDIA',699.99,50,2),
 ('Corsair Vengeance LPX 16GB','High-speed RAM module','Corsair',79.99,200,3),
 ('AMD Ryzen 9 5900X','High-performance processor','AMD',499.99,30,4),
