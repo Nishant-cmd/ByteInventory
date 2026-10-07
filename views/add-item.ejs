@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Item</title>
+</head>
+
+<body>
+    <header class="page-header">
+        <p class="brand-name">Item Form</p>
+        <h3 class="page-title">New Item</h3>
+    </header>
+    <main class="page-content">
+        <section class="page-introduction">
+            <p class="intro-text">Enter the item details below.</p>
+        </section>
+
+        <form action="/items/new/saveItem/<%= categoryId %>" method="POST">
+            <div class="form-group">
+                <label for="item-name">Item Name:</label>
+                <input type="text" id="item-name" name="name" required />
+            </div>
+
+            <div class="form-group">
+                <label for="item-description">Description:</label>
+                <textarea id="item-description" name="description" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="item-manufacturer">Manufacturer:</label>
+                <input type="text" id="item-manufacturer" name="manufacturer" required />
+            </div>
+
+            <div class="form-group">
+                <label for="item-price">Price:</label>
+                <input type="number" id="item-price" name="price" step="0.01" min="0" required />
+            </div>
+
+            <div class="form-group">
+                <label for="item-quantity">Quantity:</label>
+                <input type="number" id="item-quantity" name="quantity" min="0" required />
+            </div>
+
+            <button class="form-submit-btn" type="submit">Create Item</button>
+        </form>
+    </main>
+
+    <a class="back-to-home-link" href="/items">Return to All Items</a>
+</body>
+
+</html>

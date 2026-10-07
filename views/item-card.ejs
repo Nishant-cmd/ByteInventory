@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= item.title %></title>
-  </head>
-  <body>
+    <title>
+        <%= category.name %>
+    </title>
+</head>
+
+<body>
     <header class="page-header">
-      <p class="item-page-label">INVENTORY ITEM</p>
-      <h3 class="category-title"><%= item.title %></h3>
+        <p class="item-page-label">INVENTORY ITEM</p>
+        <h3 class="category-title">
+            <%= item.name %>
+        </h3>
     </header>
 
     <main class="page-content">
-      <section class="page-introduction">
-        <p class="intro-text"><%= item.description %></p>
-      </section>
-      <section class="item-details">
-        <a class="item-details__link" href="/items/<%= item.name %>"><%= item.name %></a>
-        <p class="item-details__manufacturer">Manufacturer: <%= item.manufacturer %></p>
-        <p class="item-details__price">Price: $ <%= item.price %></p>
-        <p class="item-details__quantity">Quantity: <%= item.quantity %></p>
-      </section>
+        <section class="page-introduction">
+            <p class="intro-text">
+                <%= item.description %>
+            </p>
+        </section>
+        <section class="item-details">
+            <p class="item-details__manufacturer">Manufacturer: <%= item.manufacturer %>
+            </p>
+            <p class="item-details__price">Price: $ <%= item.price %>
+            </p>
+            <p class="item-details__quantity">Quantity: <%= item.quantity %>
+            </p>
+            <a href="/categories/<%=item.category_id %>">Category: <%=category.name %></a>
+        </section>
     </main>
 
-    <a class="back-to-home-link" href="/items">Return to all items</a>
-  </body>
-</html>
+    <a class="back-to-home-link" href="/">Return to Main Page</a>
+</body>
 
+</html>

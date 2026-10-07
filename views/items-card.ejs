@@ -1,28 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%=category.title%></title>
-  </head>
-  <body>
+    <title>
+        <%=category.name%>
+    </title>
+</head>
+
+<body>
     <header class="page-header">
-      <p class="category-page-label">Category</p>
-      <h3 class="category-title"><%=category.title%></h3>
+        <p class="category-page-label">Category</p>
+        <h3 class="category-title">
+            <%=category.name%>
+        </h3>
     </header>
 
     <main class="page-content">
-      <section class="page-introduction">
-        <p class="intro-text">Items</p>
-      </section>
-      <section class="item-details">
-        <a class="item-details__link" href="/items/<%= item.name %>"><%= item.name %></a>
-        <p class="item-details__manufacturer">Manufacturer: <%= item.manufacturer %></p>
-        <p class="item-details__price">Price: $ <%= item.price %></p>
-        <p class="item-details__quantity">Quantity: <%= item.quantity %></p>
-      </section>
-    </main>
+        <section class="page-introduction">
+            <p class="intro-text">Items</p>
+        </section>
 
-    <a class="back-to-home-link" href="/items">Return to all items</a>
-  </body>
+<% if (items.length === 0) { %>
+
+<p>No items found.</p>
+
+
+<% } else { %>
+
+<% items.forEach((item) => { %>
+
+    <section class="item-details">
+        <a class="item-details__link" href="/items/<%= item.item_id %>">
+            <%= item.name %>
+        </a>
+
+        <p class="item-details__manufacturer">
+            Manufacturer: <%= item.manufacturer %>
+        </p>
+
+        <p class="item-details__price">
+            Price: $ <%= item.price %>
+        </p>
+
+        <p class="item-details__quantity">
+            Quantity: <%= item.quantity %>
+        </p>
+    </section>
+
+<% }) %>
+
+
+<% } %>
+
+
+
+    </main>
+    <% if (category.name !=='All Items' && items.length > 0) { %>
+        <a class="add-item-to-category" href="/categories/new/<%= items[0].category_id %>"> Add a new item</a>
+        <a href="/categories/editCategories/<%=items[0].category_id %>">Edit Category</a>
+        <a href="/categories/delete/<%=items[0].category_id %>">Delete Category</a>
+        <% } %>
+
+            <a class="back-to-home-link" href="/categories">Return to all categories</a>
+</body>
+
 </html>
